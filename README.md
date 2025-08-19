@@ -18,6 +18,12 @@ pip install boolean_gene
 ## Usage
 This package contains functions for running stability analysis, counting a network's loops, and measuring the clustering coefficient of each gene in a network. Each of these functions generates a user-defined number of randomized networks
 
+For instance, to run the stability analysis function:
+```
+boolean_gene run_stability_analysis -i "/path/to/input.txt" -o "/path/to/output/directory" 
+```  
+where the input .txt file should define each gene's associated Boolean function using AND, OR, and NOT connectives (for examples, see `sample_inputs`, which were downloaded from the Cell Collective database (2)).
+
 ## Citations
 1. Elowitz, M., Leibler, S. A synthetic oscillatory network of transcriptional regulators. Nature 403, 335–338 (2000).
 2. Helikar, T., Kowal, B., McClenathan, S. et al. The Cell Collective: Toward an open and collaborative approach to systems biology. BMC Syst Biol 6, 96 (2012).
