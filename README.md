@@ -16,7 +16,7 @@ pip install boolean_gene
 ```
 
 ## Usage
-This package contains functions for running stability analysis, counting a network's loops, and measuring the clustering coefficient of each gene in a network. Each of these functions generates a user-defined number of randomized networks
+This package contains functions for running stability analysis, counting a network's loops, and measuring the clustering coefficient of each gene in a network. Each of these functions generates a user-defined number of randomized networks that preserve the Boolean functions of the original input network, allowing for comparison to a null model.
 
 For instance, to run the stability analysis function:
 ```
