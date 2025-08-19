@@ -10,6 +10,14 @@ Interactions between genes and their regulators (such as transcription factors o
 ## What does this software do?
 This package allows users to perform stability analysis and measure topological features (e.g., loops or clusters) of an input Boolean gene network. The input can be either a user-defined network or a pre-defined network from the CellCollective database (2). A strength of this package is its ability to generate randomized networks that nevertheless preserve the logical structure of the input network, including the in-degrees, out-degrees, and Boolean function of each gene. This feature is integrated into the stability analysis pipeline such that users can compare the input network to large numbers of random networks that are logically identical but topologically different from the input. This analysis allows for the characterization of topological modifiers of GRN stability, which can have applications in synthetic biology, systems biology, and biomedical drug discovery. 
 
+## Installation
+```
+pip install boolean_gene
+```
+
+## Usage
+This package contains functions for running stability analysis, counting a network's loops, and measuring the clustering coefficient of each gene in a network. Each of these functions generates a user-defined number of randomized networks
+
 ## Citations
 1. Elowitz, M., Leibler, S. A synthetic oscillatory network of transcriptional regulators. Nature 403, 335–338 (2000).
 2. Helikar, T., Kowal, B., McClenathan, S. et al. The Cell Collective: Toward an open and collaborative approach to systems biology. BMC Syst Biol 6, 96 (2012).
