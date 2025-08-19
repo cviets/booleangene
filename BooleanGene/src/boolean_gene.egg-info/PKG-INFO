@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: boolean_gene
+Version: 0.0.1
+Summary: Analysis of Boolean gene networks
+Author: Chris Viets
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: networkx
+Requires-Dist: sympy
+Requires-Dist: tqdm
