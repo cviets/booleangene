@@ -8,6 +8,7 @@ Interactions between genes and their regulators (such as transcription factors o
 This package allows users to perform stability analysis and measure topological features (e.g., loops or clusters) of an input Boolean gene network. The input can be either a user-defined network or a pre-defined network from the CellCollective database (2). A strength of this package is its ability to generate randomized networks that nevertheless preserve the logical structure of the input network, including the in-degrees, out-degrees, and Boolean function of each gene. This feature is integrated into the stability analysis pipeline such that users can compare the input network to large numbers of random networks that are logically identical but topologically different from the input. This analysis allows for the characterization of topological modifiers of GRN stability, which can have applications in synthetic biology, systems biology, and biomedical drug discovery. 
 
 ![Repressilator state 1](/assets/repressilator1.png)
+![Repressilator state 2](/assets/repressilator2.png)
 
 ## Installation
 
