@@ -9,6 +9,7 @@ This package allows users to perform stability analysis and measure topological 
 
 ![Repressilator state 1](/assets/repressilator1.png)
 ![Repressilator state 2](/assets/repressilator2.png)
+![Repressilator state 3](/assets/repressilator3.png)
 
 ## Installation
 
