@@ -1,0 +1,6 @@
+Treg = ( ( ( Treg  ) AND NOT ( Treg Inhibitor  )  ) AND NOT ( IL6  ) )  OR ( ( ( TGFb AND ( ( ( NaiveCD4TCell ) ) )     ) AND NOT ( Treg Inhibitor  )  ) AND NOT ( IL6  ) ) 
+Th17 = ( ( ( ( ( Th17  ) AND NOT ( Treg  )  ) AND NOT ( Th17 Inhibitor  )  ) AND NOT ( Th2  )  ) AND NOT ( Th1  ) )  OR ( ( ( ( ( TGFb AND ( ( ( NaiveCD4TCell ) )  AND ( ( IL6 ) ) )     ) AND NOT ( Treg  )  ) AND NOT ( Th17 Inhibitor  )  ) AND NOT ( Th2  )  ) AND NOT ( Th1  ) ) 
+AntigenPresentingCell = ( Pathogen ) 
+NaiveCD4TCell = ( AntigenPresentingCell ) 
+Th2 = ( ( ( ( ( Th2  ) AND NOT ( Th17  )  ) AND NOT ( Th1  )  ) AND NOT ( Treg  )  ) AND NOT ( Th2 Inhibitor  ) )  OR ( ( ( ( ( IL4 AND ( ( ( NaiveCD4TCell ) ) )     ) AND NOT ( Th17  )  ) AND NOT ( Th1  )  ) AND NOT ( Treg  )  ) AND NOT ( Th2 Inhibitor  ) ) 
+Th1 = ( ( ( ( ( Th1  ) AND NOT ( Treg  )  ) AND NOT ( Th1 Inhibitor  )  ) AND NOT ( Th17  )  ) AND NOT ( Th2  ) )  OR ( ( ( ( ( IFNg AND ( ( ( NaiveCD4TCell ) ) )     ) AND NOT ( Treg  )  ) AND NOT ( Th1 Inhibitor  )  ) AND NOT ( Th17  )  ) AND NOT ( Th2  ) )  OR ( ( ( ( ( IL12 AND ( ( ( NaiveCD4TCell ) ) )     ) AND NOT ( Treg  )  ) AND NOT ( Th1 Inhibitor  )  ) AND NOT ( Th17  )  ) AND NOT ( Th2  ) ) 
