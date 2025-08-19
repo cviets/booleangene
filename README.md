@@ -22,7 +22,7 @@ For instance, to run the stability analysis function:
 ```
 boolean_gene run_stability_analysis -i "/path/to/input.txt" -o "/path/to/output/directory" 
 ```  
-where the input .txt file should define each gene's associated Boolean function using AND, OR, and NOT connectives (for examples, see `sample_inputs`, which were downloaded from the Cell Collective database (2)).
+where the input .txt file should define each gene's associated Boolean function using AND, OR, and NOT connectives (for examples, see the text files in the `sample_inputs` directory, which were downloaded from the Cell Collective database (2)).
 
 ## Citations
 1. Elowitz, M., Leibler, S. A synthetic oscillatory network of transcriptional regulators. Nature 403, 335–338 (2000).
