@@ -16,13 +16,13 @@ pip install boolean_gene
 ```
 
 ## Usage
-This package contains functions for running stability analysis, counting a network's loops, and measuring the clustering coefficient of each gene in a network. Each of these functions generates a user-defined number of randomized networks that preserve the Boolean functions of the original input network, allowing for comparison to a null model.
+This package contains functions for running stability analysis, counting a network's loops, and measuring the clustering coefficient of each gene in a network (use `boolean_gene -h` to view all available functions). Each of these functions generates a user-defined number of randomized networks that preserve the Boolean functions of the original input network, allowing for comparison to a null model.
 
 For instance, to run the stability analysis function:
 ```
 boolean_gene run_stability_analysis -i "/path/to/input.txt" -o "/path/to/output/directory" 
 ```  
-where the input .txt file should define each gene's associated Boolean function using AND, OR, and NOT connectives (for examples, see the text files in the `sample_inputs` directory, which were downloaded from the Cell Collective database (2)).
+where the input .txt file should define each gene's associated Boolean function using AND, OR, and NOT connectives. For example inputs, see the text files in the `sample_inputs` directory, which were downloaded from the Cell Collective database (2).
 
 ## Citations
 1. Elowitz, M., Leibler, S. A synthetic oscillatory network of transcriptional regulators. Nature 403, 335–338 (2000).
