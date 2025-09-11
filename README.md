@@ -1,4 +1,4 @@
-# BooleanGene
+<h2 align="center">Boolean Gene</h2>
 A Python package for analyzing Boolean gene networks.
 
 ## What are Boolean gene networks?
