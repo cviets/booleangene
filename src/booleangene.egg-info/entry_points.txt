@@ -1,2 +1,2 @@
 [console_scripts]
-boolean_gene = boolean_gene.cli:main
+booleangene = booleangene.cli:main
