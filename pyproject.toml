@@ -19,8 +19,8 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/cviets/BooleanGene"
-"Bug Tracker" = "https://github.com/cviets/BooleanGene/issues"
+"Homepage" = "https://github.com/cviets/booleangene"
+"Bug Tracker" = "https://github.com/cviets/booleangene/issues"
 
 [project.scripts]
 boolean_gene = "boolean_gene.cli:main"
