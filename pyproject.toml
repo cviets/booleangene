@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "boolean_gene"
-version = "0.0.1"
+name = "booleangene"
+version = "0.0.2"
 description = "Analysis of Boolean gene networks"
 readme = "README.md"
 requires-python = ">=3.6"
@@ -23,4 +23,4 @@ dependencies = [
 "Bug Tracker" = "https://github.com/cviets/booleangene/issues"
 
 [project.scripts]
-boolean_gene = "boolean_gene.cli:main"
+booleangene = "booleangene.cli:main"

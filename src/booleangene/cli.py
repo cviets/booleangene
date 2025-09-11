@@ -5,7 +5,7 @@ from .run_lyapunov_analysis import main as lyapunov_analysis_main
 from .run_clustering_analysis import main as clustering_analysis_main
 
 def main():
-    parser = argparse.ArgumentParser(prog="boolean_gene", description="Analysis of Boolean gene networks")
+    parser = argparse.ArgumentParser(prog="booleangene", description="Analysis of Boolean gene networks")
     subparsers = parser.add_subparsers(dest="command", required=True)
     
     stability_analysis_parser = subparsers.add_parser("run_stability_analysis", help="Run stability analysis")
