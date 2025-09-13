@@ -6,6 +6,7 @@ src/booleangene/run_clustering_analysis.py
 src/booleangene/run_count_loops.py
 src/booleangene/run_lyapunov_analysis.py
 src/booleangene/run_stability_analysis.py
+src/booleangene/run_visualize.py
 src/booleangene.egg-info/PKG-INFO
 src/booleangene.egg-info/SOURCES.txt
 src/booleangene.egg-info/dependency_links.txt
@@ -21,3 +22,4 @@ src/booleangene/modules/io_utils.py
 src/booleangene/modules/logic_processing.py
 src/booleangene/modules/qm.py
 src/booleangene/modules/regenerate_network.py
+src/booleangene/modules/visualization_helper.py

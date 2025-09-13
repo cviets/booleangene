@@ -2,8 +2,15 @@ import random
 from . import qm as qm
 from .BooleanNetwork import BooleanNetwork
 from .logic_processing import get_inputs, switch_directions
+from typing import Dict, Tuple
 
-def regenerate_network(bnetwork, preserve_in_degrees, preserve_out_degrees, preserve_funcs, p=1):
+def regenerate_network(
+        bnetwork: BooleanNetwork, 
+        preserve_in_degrees:bool=True, 
+        preserve_out_degrees:bool=True, 
+        preserve_funcs:bool=True, 
+        p=1
+        ) -> BooleanNetwork:
     
     def choose_n(inp, n_):
         """
@@ -67,6 +74,14 @@ def regenerate_network(bnetwork, preserve_in_degrees, preserve_out_degrees, pres
             new_formula = new_formula.replace(' ' + old_name + ' ', ' ' + new_name + ' ')
         return new_formula
     
+    def transfer_dict_to_tmp(transfer: Dict) -> Tuple[Dict, Dict]:
+
+        # silly hack to make sure formula renaming doesn't screw up 
+        # needed when a node is common to transfer.keys() and transfer.vals()
+        out0 = {elt: val+"_TEMP" for elt, val in transfer.items()}
+        out1 = {val+"_TEMP": val for val in transfer.values()}
+        return out0, out1
+    
     def choose_random_key_from_dict(inp):
         return random.choices(list(inp), inp.values())[0]
 
@@ -114,12 +129,21 @@ def regenerate_network(bnetwork, preserve_in_degrees, preserve_out_degrees, pres
             in_degs = bnetwork.get_in_degs()
             out_degs = switch_directions(in_degs)
             
+            # get each node's number of in-degrees and out-degrees
             in_degs_counts = {k: len(v) for k, v in in_degs.items()}
             out_degs_counts = {k: len(v) for k, v in out_degs.items()}
+
+            # regulation dict: Dict[str, List[str]] 
+            # keys = names of nodes
+            # values = list of nodes that regulate that node (have arrows pointing to it)
             regulation_dict = {}
             
+            # iterate over all edges in the graph
             for i in range(sum(in_degs_counts.values())):
+
+                # randomly pick one destination node
                 to_rand = choose_random_key_from_dict(in_degs_counts)
+                # randomly pick one source node
                 from_rand = choose_random_key_from_dict(out_degs_counts)
                 
                 if to_rand in regulation_dict:
@@ -151,9 +175,34 @@ def regenerate_network(bnetwork, preserve_in_degrees, preserve_out_degrees, pres
                 new_minterms = None
                 for node, variable_names in regulation_dict.items():
                     transfer_dict = {elt: variable_names[i] for i, elt in enumerate(list(in_degs[node]))}
-                    new_expressions[node] = rename_variables_in_formula(expressions[node], transfer_dict)
+                    tdict0, tdict1 = transfer_dict_to_tmp(transfer_dict)
+                    exp_tmp = rename_variables_in_formula(expressions[node], tdict0)
+                    new_expressions[node] = rename_variables_in_formula(exp_tmp, tdict1)
                 
-            return BooleanNetwork(new_expressions, external, new_minterms)
+            out = BooleanNetwork(new_expressions, external, new_minterms)
+            out_num_in_degs = out.get_num_in_degs()
+            diff_in_degs = dict()
+            for elt, val in bnetwork.get_num_in_degs().items():
+                difference = val - out_num_in_degs[elt]
+                if difference != 0:
+                    diff_in_degs[elt] = (val, out_num_in_degs[elt])
+
+            regulation_dict_diff = {elt: val for elt, val in regulation_dict.items() if elt in diff_in_degs}
+            for node, variable_names in regulation_dict_diff.items():
+                transfer_dict_diff = {elt:variable_names[i] for i, elt in enumerate(list(in_degs[node]))}
+                new_exp = rename_variables_in_formula(expressions[node], transfer_dict)
+
+            assert bnetwork.get_num_in_degs() == out.get_num_in_degs(), (
+                "Return has different in degrees", 
+                diff_in_degs, 
+                regulation_dict_diff, 
+                node,
+                transfer_dict_diff, 
+                new_exp 
+                )
+            assert bnetwork.get_num_out_degs() == out.get_num_out_degs(), "Return has different out degrees"
+
+            return out
             
         in_degs = bnetwork.get_in_degs()
         out_degs = bnetwork.get_out_degs()
@@ -212,7 +261,9 @@ def regenerate_network(bnetwork, preserve_in_degrees, preserve_out_degrees, pres
             random.shuffle(regulators_new)
             transfer_dict = {regulator: regulator for regulator in regulators_old} 
             transfer_dict = transfer_dict | {elt: regulators_new[i] for i, elt in enumerate(list(in_degs[node] - set(regulators_old)))}
-            new_expressions[node] = rename_variables_in_formula(expressions[node], transfer_dict)
+            tdict0, tdict1 = transfer_dict_to_tmp(transfer_dict)
+            exp_tmp = rename_variables_in_formula(expressions[node], tdict0)
+            new_expressions[node] = rename_variables_in_formula(exp_tmp, tdict1)
                 
         
         return BooleanNetwork(new_expressions, external, new_minterms)

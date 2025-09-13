@@ -26,15 +26,15 @@ This package allows users to perform stability analysis and measure topological 
 
 ## Installation
 ```
-pip install boolean_gene
+pip install booleangene
 ```
 
 ## Usage
-This package contains functions for running stability analysis, counting a network's loops, and measuring the clustering coefficient of each gene in a network (use `boolean_gene -h` to view all available functions). Each of these functions generates a user-defined number of randomized networks that preserve the Boolean functions of the original input network, allowing for comparison to a null model.
+This package contains functions for running stability analysis, counting a network's loops, and measuring the clustering coefficient of each gene in a network (use `booleangene -h` to view all available functions). Each of these functions generates a user-defined number of randomized networks that preserve the Boolean functions of the original input network, allowing for comparison to a null model.
 
 For instance, to run the stability analysis function:
 ```
-boolean_gene run_stability_analysis -i "/path/to/input.txt" -o "/path/to/output/directory" 
+booleangene run_stability_analysis -i "/path/to/input.txt" -o "/path/to/output/directory" 
 ```  
 where the input .txt file should define each gene's associated Boolean function using AND, OR, and NOT connectives. For example inputs, see the text files in the `sample_inputs` directory, which were downloaded from the Cell Collective database (2).
 

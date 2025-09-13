@@ -222,6 +222,12 @@ class BooleanNetwork:
     def get_out_degs(self):
         return switch_directions(self.get_in_degs())
     
+    def get_num_in_degs(self):
+        return {elt: len(val) for elt, val in self.get_in_degs().items()}
+    
+    def get_num_out_degs(self):
+        return {elt: len(val) for elt, val in self.get_out_degs().items()}
+    
     def is_bipartite(self):
         
         red = set()

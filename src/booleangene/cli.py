@@ -3,6 +3,7 @@ from .run_stability_analysis import main as stability_analysis_main
 from .run_count_loops import main as count_loops_main
 from .run_lyapunov_analysis import main as lyapunov_analysis_main
 from .run_clustering_analysis import main as clustering_analysis_main
+from .run_visualize import main as visualize_main
 
 def main():
     parser = argparse.ArgumentParser(prog="booleangene", description="Analysis of Boolean gene networks")
@@ -32,6 +33,12 @@ def main():
     clustering_coefficients_parser.add_argument('-o', '--output', type=str, required=True, help="Directory to save results")
     clustering_coefficients_parser.add_argument('-r', '--num_random_networks', type=str, required=False, default=100, help="Number of random networks to generate, where all random networks are logically identical to the input")
 
+    visualize_parser = subparsers.add_parser("visualize", help="Visualize the network and a randomized version of it")
+    visualize_parser.add_argument('-i', '--input', type=str, required=True, help="Path to input text file")
+    visualize_parser.add_argument('-o', '--output', type=str, required=True, help="Directory to save graphs")
+    visualize_parser.add_argument('-l', '--labels', type=bool, default=False, required=False, help="Whether to label graph nodes")
+    visualize_parser.add_argument('-s', '--seed', type=int, default=-1, required=False, help="Seed for node positions")
+
     args = parser.parse_args()
     
     if args.command == "run_stability_analysis":
@@ -42,6 +49,12 @@ def main():
         lyapunov_analysis_main(args.input, args.output, args.num_random_networks, args.simulations, args.max_timesteps)
     elif args.command == "run_clustering_analysis":
         clustering_analysis_main(args.input, args.output, args.num_random_networks)
+    elif args.command == "visualize":
+        if args.seed == -1:
+            seed = None
+        else:
+            seed = args.seed
+        visualize_main(args.input, args.output, args.labels, seed)
     else:
         print(f"Unknown command: {args.command}")
 
